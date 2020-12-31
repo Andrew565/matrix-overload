@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@andrewcreated/deck-of-cards.js@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@andrewcreated/deck-of-cards.js/-/deck-of-cards.js-1.0.0.tgz#c8f7c6d48648ed575a85c131283f88aa27b5ce93"
+
 "@babel/code-frame@7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
