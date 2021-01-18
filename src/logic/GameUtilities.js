@@ -60,22 +60,21 @@ export function assignRoyals(cardArray, royals) {
   if (!royals.length) return cardArray;
 
   // LOOP over the royals, in order
-  const suitableMatches = [];
   royals.forEach((royal) => {
     const targetSuit = royal.suit;
     let bestMatch = null;
     // Check if there are any foundation cards with free royal slots that have the same suit
     const highestSuitMatch = cardArray.reduce(
-      (selection, row, i) => {
-        row.forEach((col, j) => {
+      (selection, suitRow, i) => {
+        suitRow.forEach((suitCol, j) => {
           if (
-            typeof col !== "string" &&
-            col !== null &&
-            col.suit === targetSuit &&
-            col.numberRank > selection.rank &&
+            typeof suitCol !== "string" &&
+            suitCol !== null &&
+            suitCol.suit === targetSuit &&
+            suitCol.numberRank > selection.rank &&
             getLocationSlots([i, j], cardArray).length > 0
           )
-            selection = { location: [i, j], rank: col.numberRank };
+            selection = { location: [i, j], rank: suitCol.numberRank };
         });
         return selection;
       },
@@ -86,17 +85,17 @@ export function assignRoyals(cardArray, royals) {
 
     // If no suit match, look for color match
     const highestColorMatch = cardArray.reduce(
-      (selection, row, i) => {
+      (selection, colorRow, i) => {
         const colors = suitsAndColors[royal.suit];
-        row.forEach((col, j) => {
+        colorRow.forEach((colorCol, j) => {
           if (
-            typeof col !== "string" &&
-            col !== null &&
-            colors.includes(col.suit) &&
-            col.numberRank > selection.rank &&
+            typeof colorCol !== "string" &&
+            colorCol !== null &&
+            colors.includes(colorCol.suit) &&
+            colorCol.numberRank > selection.rank &&
             getLocationSlots([i, j], cardArray).length > 0
           )
-            selection = { location: [i, j], rank: col.numberRank };
+            selection = { location: [i, j], rank: colorCol.numberRank };
         });
         return selection;
       },
@@ -107,15 +106,15 @@ export function assignRoyals(cardArray, royals) {
 
     // If no color match, just assign to the highest available card
     const highestRankMatch = cardArray.reduce(
-      (selection, row, i) => {
-        row.forEach((col, j) => {
+      (selection, rankRow, i) => {
+        rankRow.forEach((rankCol, j) => {
           if (
-            typeof col !== "string" &&
-            col !== null &&
-            col.numberRank > selection.rank &&
+            typeof rankCol !== "string" &&
+            rankCol !== null &&
+            rankCol.numberRank > selection.rank &&
             getLocationSlots([i, j], cardArray).length > 0
           )
-            selection = { location: [i, j], rank: col.numberRank };
+            selection = { location: [i, j], rank: rankCol.numberRank };
         });
         return selection;
       },

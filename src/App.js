@@ -20,8 +20,8 @@ function App() {
 
   // Create a new deck
   useEffect(() => {
-    const cards = StandardCards.standard52DeckOfCards;
-    const deck = new DeckOfCards([...cards, StandardCards.FancyJoker]);
+    const deckOfCards = StandardCards.standard52DeckOfCards;
+    const deck = new DeckOfCards([...deckOfCards, StandardCards.FancyJoker]);
     const [newCardArray, restOfDeck] = populateGameField(deck);
     setCards(restOfDeck);
     setCardArray(newCardArray);

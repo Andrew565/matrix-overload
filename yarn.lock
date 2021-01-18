@@ -1242,6 +1242,26 @@
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
 
+"@dnd-kit/accessibility@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/accessibility/-/accessibility-1.0.1.tgz#666a76377704db1227bde18e671757e161ecf207"
+  dependencies:
+    tslib "^2.0.0"
+
+"@dnd-kit/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/core/-/core-1.0.1.tgz#8db0098fd200746cfddb86ed9575203198a0f378"
+  dependencies:
+    "@dnd-kit/accessibility" "^1.0.1"
+    "@dnd-kit/utilities" "^1.0.1"
+    tslib "^2.0.0"
+
+"@dnd-kit/utilities@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dnd-kit/utilities/-/utilities-1.0.1.tgz#a26089aad6a6f6ba64bde46c7145ce722f46d30b"
+  dependencies:
+    tslib "^2.0.0"
+
 "@eslint/eslintrc@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.2.2.tgz#d01fc791e2fc33e88a29d6f3dc7e93d0cd784b76"
@@ -9627,6 +9647,10 @@ tsconfig-paths@^3.9.0:
 tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
+
+tslib@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
 
 tsutils@^3.17.1:
   version "3.17.1"

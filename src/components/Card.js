@@ -1,11 +1,18 @@
+import { useDraggable } from "@dnd-kit/core";
+
+/**
+ * @param {object} props
+ * @param {Standard52Card} props.card
+ */
 const Card = ({ card }) => {
-  if (!card) return null;
+  const { attributes, listeners, setNodeRef } = useDraggable({
+    id: card.name,
+  });
 
   return (
-    <div>
-      {card.initial}
-      {card.suit[0]}
-    </div>
+    <figure ref={setNodeRef} {...listeners} {...attributes}>
+      <img src={card.image} alt={card.name} />
+    </figure>
   );
 };
 

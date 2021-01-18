@@ -7,6 +7,6 @@ describe("populateGameField", () => {
   it("should not error", () => {
     const [cardArray, deck2] = populateGameField(deck);
     expect(cardArray.length).toBe(5);
-    expect(deck.drawPile.length < 52).toBe(true);
+    expect(deck2.drawPile.length < 52).toBe(true);
   });
 });

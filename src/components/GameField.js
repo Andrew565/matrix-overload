@@ -1,24 +1,18 @@
-import { useEffect, useState } from "react";
-import Card from "./Card";
+import { CardSlot } from ".";
 
 const GameField = ({ cardArray }) => {
-  const _ = "_";
-  const [cards, setCards] = useState([[]]);
-
-  useEffect(() => {
-    setCards(cardArray);
-  }, [cardArray]);
-
   return (
-    <div>
-      {cards.map((row, i) =>
-        row.map((card, j) => {
-          if (card === _) return <div className="empty-space">&nbsp;</div>;
-          // if (card === null) return <div className="card-slot">&nbsp;</div>;
-          return <Card key={`row${i}col${j}`} card={card} />;
-        })
-      )}
-    </div>
+    <main>
+      <div id="cardSlots">
+        {[
+          [0, 1, 2, 3, 4],
+          [0, 1, 2, 3, 4],
+          [0, 1, 2, 3, 4],
+        ].map((row, i) =>
+          row.map((_, j) => <CardSlot key={`row${i}col${j}`} id={`row${i}col${j}`} card={cardArray[i][j] || null} />)
+        )}
+      </div>
+    </main>
   );
 };
 
