@@ -7,6 +7,9 @@
  *
  * @typedef {import("@andrewcreated/deck-of-cards.js/dist/standardCardsWithImages").Standard52CardWithImage} Standard52Card
  *
- * @typedef {import("@andrewcreated/deck-of-cards.js/dist/DeckOfCards").DeckOfCards} DeckOfCards
+ * @typedef {import("@andrewcreated/deck-of-cards.js/dist/DeckOfCards").DeckOfCards<Standard52Card>} DOC
  *
+ * @typedef {DOC} DeckOfCards
+ *
+ * @typedef {Object<string, {location: boolean, slot: CardArrayLocation}>} SlotArray
  */

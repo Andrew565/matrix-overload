@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
-import { StandardCards, DeckOfCards } from "@andrewcreated/deck-of-cards.js";
+import { StandardCardsWithImages, DeckOfCards } from "@andrewcreated/deck-of-cards.js";
 import { Deck, GameField } from "./components";
 import "./App.css";
 import { populateGameField } from "./logic/GameUtilities";
 
+const cardsWithImages = StandardCardsWithImages.standard52DeckOfCardsWithImages();
+
 function App() {
-  const [cards, setCards] = useState(new DeckOfCards(StandardCards.standard52DeckOfCards));
+  const startingDeck = () => {
+    const deck = new DeckOfCards(cardsWithImages);
+    deck.addToDrawPile([StandardCardsWithImages.FancyJokerWithImage]);
+    return deck;
+  };
+  const [cards, setCards] = useState(startingDeck());
   const _ = "_";
 
   /** @type {CardArray} */
@@ -20,8 +27,8 @@ function App() {
 
   // Create a new deck
   useEffect(() => {
-    const deckOfCards = StandardCards.standard52DeckOfCards;
-    const deck = new DeckOfCards([...deckOfCards, StandardCards.FancyJoker]);
+    const deckOfCards = StandardCardsWithImages.standard52DeckOfCardsWithImages();
+    const deck = new DeckOfCards([...deckOfCards, StandardCardsWithImages.FancyJokerWithImage]);
     const [newCardArray, restOfDeck] = populateGameField(deck);
     setCards(restOfDeck);
     setCardArray(newCardArray);
@@ -31,15 +38,17 @@ function App() {
     <div className="App">
       <header>
         <h1>Matrix Overload</h1>
+      </header>
+      <main className="grid grid-cols-3">
         <aside>
           {/* This is where the deck will go, as well as temporary holding for royals during first deal */}
           <Deck cards={cards} />
         </aside>
-        <section>
+        <section className="col-span-2">
           {/* This is where the main field will be. It will be a 5x5 grid with no slots on the four corners. */}
           <GameField cardArray={cardArray} />
         </section>
-      </header>
+      </main>
     </div>
   );
 }

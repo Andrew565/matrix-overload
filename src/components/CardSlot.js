@@ -9,11 +9,10 @@ import { Card } from ".";
  */
 const CardSlot = ({ card, disabled, id }) => {
   const { isOver, setNodeRef } = useDroppable({ id, disabled });
-  const style = {
-    backgroundColor: isOver ? "red" : "green",
-  };
+  const stateClass = disabled ? "bg-white" : isOver ? "bg-red-400" : "bg-red-50";
+
   return (
-    <div className="card" ref={setNodeRef} style={style}>
+    <div className={`${stateClass} h-32 w-24`} ref={setNodeRef} style={{ maxWidth: "6rem" }}>
       {card && <Card card={card} />}
     </div>
   );
