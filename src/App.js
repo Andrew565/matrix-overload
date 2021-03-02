@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { StandardCardsWithImages, DeckOfCards } from "@andrewcreated/deck-of-cards.js";
+import { StandardCards, DeckOfCards } from "@andrewcreated/deck-of-cards.js";
 import { Deck, GameField } from "./components";
 import "./App.css";
 import { populateGameField } from "./logic/GameUtilities";
 
-const cardsWithImages = StandardCardsWithImages.standard52DeckOfCardsWithImages();
+const standardCards = StandardCards.standard52DeckOfCards;
 
 function App() {
   const startingDeck = () => {
-    const deck = new DeckOfCards(cardsWithImages);
-    deck.addToDrawPile([StandardCardsWithImages.FancyJokerWithImage]);
+    const deck = new DeckOfCards(standardCards);
+    deck.addToDrawPile([StandardCards.FancyJoker]);
     return deck;
   };
   const [cards, setCards] = useState(startingDeck());
@@ -27,9 +27,7 @@ function App() {
 
   // Create a new deck
   useEffect(() => {
-    const deckOfCards = StandardCardsWithImages.standard52DeckOfCardsWithImages();
-    const deck = new DeckOfCards([...deckOfCards, StandardCardsWithImages.FancyJokerWithImage]);
-    const [newCardArray, restOfDeck] = populateGameField(deck);
+    const [newCardArray, restOfDeck] = populateGameField(startingDeck());
     setCards(restOfDeck);
     setCardArray(newCardArray);
   }, []);

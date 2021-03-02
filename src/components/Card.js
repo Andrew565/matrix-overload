@@ -9,13 +9,9 @@ const Card = ({ card }) => {
     id: card.name,
   });
 
-  console.log("card image:", card.image);
-
-  return (
-    <figure ref={setNodeRef} {...listeners} {...attributes}>
-      <img src={card.image} alt={card.name} />
-    </figure>
-  );
+  return <figure ref={setNodeRef} {...listeners} {...attributes}>
+    <img src="" alt="" />
+  </figure>;
 };
 
 export default Card;

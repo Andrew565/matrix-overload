@@ -5,7 +5,7 @@
  *
  * @typedef {[number, number]} CardArrayLocation
  *
- * @typedef {import("@andrewcreated/deck-of-cards.js/dist/standardCardsWithImages").Standard52CardWithImage} Standard52Card
+ * @typedef {import("@andrewcreated/deck-of-cards.js/dist/standard52CardsAndJokers".Standard52Card} Standard52Card
  *
  * @typedef {import("@andrewcreated/deck-of-cards.js/dist/DeckOfCards").DeckOfCards<Standard52Card>} DOC
  *

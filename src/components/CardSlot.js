@@ -13,7 +13,7 @@ const CardSlot = ({ card, disabled, id }) => {
 
   return (
     <div className={`${stateClass} h-32 w-24`} ref={setNodeRef} style={{ maxWidth: "6rem" }}>
-      {card && <Card card={card} />}
+      {card && card.name && <Card card={card} />}
     </div>
   );
 };

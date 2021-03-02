@@ -62,12 +62,12 @@ export function getLocationSlots([row, col], cardArray) {
 
   /** @type {SlotArray} */
   const slots = {
-    left: { location: cardArray[row] && cardArray[row][col - 1] === undefined, slot: [row, col - 1] },
-    right: { location: cardArray[row] && cardArray[row][col + 1] === undefined, slot: [row, col + 1] },
-    up: { location: cardArray[row - 1] && cardArray[row - 1][col] === undefined, slot: [row - 1, col] },
-    down: { location: cardArray[row + 1] && cardArray[row + 1][col] === undefined, slot: [row + 1, col] },
+    left: { location: cardArray[row] && cardArray[row][col - 1] === null, slot: [row, col - 1] },
+    right: { location: cardArray[row] && cardArray[row][col + 1] === null, slot: [row, col + 1] },
+    up: { location: cardArray[row - 1] && cardArray[row - 1][col] === null, slot: [row - 1, col] },
+    down: { location: cardArray[row + 1] && cardArray[row + 1][col] === null, slot: [row + 1, col] },
   };
-  Object.entries(slots).forEach(
+  Object.values(slots).forEach(
     /**
      * @param {object} param0
      * @param {boolean} param0.location
@@ -102,7 +102,9 @@ export function assignRoyals(cardArray, royals) {
     );
 
     // get open slot(s)
-    const [row, col] = getLocationSlots(bestMatch.location, cardArray)[0];
+    console.log("loc, arr, slots:", bestMatch.location, cardArray, getLocationSlots(bestMatch.location, cardArray));
+    const openSlots = getLocationSlots(bestMatch.location, cardArray);
+    const [row, col] = openSlots[0];
     cardArray[row][col] = royal;
   });
 
@@ -129,7 +131,7 @@ function getBestMatch(variables) {
  * @param {keyof suitsAndColors} suit
  */
 export function suitMatches(card, suit) {
-  return card?.suit === suit;
+  return card && card.suit === suit;
 }
 
 export function colorMatches(card, colors) {
